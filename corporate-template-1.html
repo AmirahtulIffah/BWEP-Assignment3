@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Corporate</title>
+	<style type="text/css">
+
+    * {
+      margin:0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    body {margin:0;font-family:Arial}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+
+		#container {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-column-gap: 10px;
+			margin-top: 50px;
+			margin-bottom: 50px;
+/*			background-color: lightblue;*/
+			grid-template-areas: 
+			"one two"
+
+
+
+		}
+
+		table {
+			position: relative;
+			width: 10vh;
+			height: 40vh;
+			border-collapse: collapse;
+			margin: auto;
+/*			top: 5%;*/
+			grid-area: one;
+		}
+
+		#box {
+			width: 55vh;
+			height: 75vh;
+			margin-top: 50px;
+			margin-bottom: 50px;
+			position: relative;
+/*			left: 20%;*/
+/*			top: 10%;*/
+/*			border:1px solid black;*/
+/*			text-align: center;*/
+/*			margin: auto;
+*/			grid-area: two;
+			/*border-color: rgb(136, 136, 255);*/
+		}
+
+		#ptitle,#pdescription,#ptime,#pdate,#paddress {
+/*			border:1px solid red;*/
+			position: relative;
+			margin: auto;
+/*			height: 20%;
+			width: 70%;*/
+			display: block;
+		}
+
+		#titleColor, #descriptionColor, #dateColor, #timeColor, #addressColor {
+			display: none;
+		}
+
+		.fcolor{
+			position: absolute;
+			text-align: center;
+		}
+
+		body{
+			background-color: lightblue;
+		}
+
+
+
+	</style>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<body  onload="move('ptitle')">
+
+
+<header>
+  <nav>
+<div class="topnav" id="myTopnav">
+  <a href="index.html" class="active">Home</a>
+  <a href="customcard.html">Custom Cards</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+  </nav>
+</header>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+</script>
+
+
+<div id="container">
+		<table>
+			<tr>
+				<td>
+					<label for="title" >Title</label>
+				</td>
+				<td>
+					<textarea name="title" id="title" onkeyup="show()" onclick="hideTitle()" style="vertical-align: center;"></textarea>
+						<div id="titleColor">
+<!-- 							<label for="titleColor" >Choose font color</label>
+							<input type="color" name="titleColor" > -->
+						</div>
+					<!-- <input type="text" name="title" id="title" onkeyup="showHTML()"> -->
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="description">Description</label>
+				</td>
+				<td>
+					<input type="text" name="description" id="description" onkeyup="showHTML()" onclick="hideDescription()">
+						<div id="descriptionColor">
+<!-- 							<label for="descriptionColor" >Choose font color</label>
+							<input type="color" name="descriptionColor" > -->
+						</div>						
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="date">Date</label>
+				</td>
+				<td>
+					<input type="date" name="date" id="date" onchange ="date()" onclick="hideDate()">
+						<div id="dateColor">
+<!-- 							<label for="dateColor" >Choose font color</label>
+							<input type="color" name="dateColor" > -->
+						</div>						
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<label for="time">Time</label>
+				</td>
+				<td>
+					<input type="time" name="time" id="time" onchange="time()" onclick="hideTime()">
+						<div id="timeColor">
+<!-- 							<label for="timeColor" >Choose font color</label>
+							<input type="color" name="timeColor" > -->
+						</div>						
+				</td>
+			</tr>	
+
+			<tr>
+				<td>
+					<label for="address">Address</label>
+				</td>
+				<td>
+					<textarea name="address" id="address" onkeyup="testing()" onclick="hideAddress()"></textarea>
+						<div id="addressColor">
+<!-- 							<label for="addressColor" >Choose font color</label>
+							<input type="color" name="addressColor" > -->
+						</div>						
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button>Send to Email</button>
+				</td>
+			</tr>
+
+<!-- 			<tr>
+				<td>
+					<label for="colorPicker">Border color:</label>
+				</td>
+				<td>
+					<input type="color" value="#FFB6C1" id="colorPicker">
+				</td> -->
+				<!-- <p id="output"></p> -->
+<!-- 			</tr>	 -->		
+
+
+
+<div id="box" >
+	<img src="corporate1.jpg" style="position: absolute;width: 55vh;height: 75vh; border:1px solid black">
+		<!-- <textarea></textarea> -->
+		<div id="ptitle" class="fcolor" style="padding-top: 16vh; font-size: 36px;">[Event Title]</div>
+		<div id="pdescription" class="fcolor" style="height: 15vh; font-size: 16px; width: 60%;padding-top: 3vh">[Event Description]</div>
+		<div style="text-align: center;position: relative; padding-top: 2vh">Date</div>
+		<div id="pdate" class="fcolor" style="width: 50%">[Date]</div>
+		<div style="text-align: center;position: relative;padding-top: 2vh">Time</div>
+		<div id="ptime" class="fcolor" style="width: 50%">[Time]</div>
+		<div style="text-align: center;position: relative;padding-top: 2vh">Address</div><div id="paddress" class="fcolor" style="width: 50%;font-size: 12px">[Address]</div>
+</div>
+</div>
+
+<!-- 	<div id="titleColor">
+		<label for="titleColor" >Choose font color</label>
+		<input type="color" name="titleColor" >
+	</div> -->
+
+
+
+
+	<script type="text/javascript">
+
+// //FOR THE DRAGGABLE TITLE
+// 	var dragItem = document.querySelector(".fcolor");
+//     var container = document.querySelector("#box");
+
+//     var active = false;
+//     var currentX;
+//     var currentY;
+//     var initialX;
+//     var initialY;
+//     var xOffset = 0;
+//     var yOffset = 0;
+
+//     container.addEventListener("touchstart", dragStart, false);
+//     container.addEventListener("touchend", dragEnd, false);
+//     container.addEventListener("touchmove", drag, false);
+
+//     container.addEventListener("mousedown", dragStart, false);
+//     container.addEventListener("mouseup", dragEnd, false);
+//     container.addEventListener("mousemove", drag, false);
+
+//     function dragStart(e) {
+//       if (e.type === "touchstart") {
+//         initialX = e.touches[0].clientX - xOffset;
+//         initialY = e.touches[0].clientY - yOffset;
+//       } else {
+//         initialX = e.clientX - xOffset;
+//         initialY = e.clientY - yOffset;
+//       }
+
+//       if (e.target === dragItem) {
+//         active = true;
+//       }
+//     }
+
+//     function dragEnd(e) {
+//       initialX = currentX;
+//       initialY = currentY;
+
+//       active = false;
+//     }
+
+//     function drag(e) {
+//       if (active) {
+      
+//         e.preventDefault();
+      
+//         if (e.type === "touchmove") {
+//           currentX = e.touches[0].clientX - initialX;
+//           currentY = e.touches[0].clientY - initialY;
+//         } else {
+//           currentX = e.clientX - initialX;
+//           currentY = e.clientY - initialY;
+//         }
+
+//         xOffset = currentX;
+//         yOffset = currentY;
+
+//         setTranslate(currentX, currentY, dragItem);
+//       }
+//     }
+
+//     function setTranslate(xPos, yPos, el) {
+//       el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+//     }
+
+
+
+
+
+
+//Hides the Font Color, only appears when clicked
+function hideTitle() {
+  var x = document.getElementById('titleColor');
+  var b = document.getElementById('ptitle');
+
+
+  if (x.style.display !== 'block') {
+    x.style.display = 'block';
+
+  } else {
+    x.style.display = 'none';
+  }
+}
+
+function hideDescription() {
+  var x = document.getElementById('descriptionColor');
+  var b = document.getElementById('pdescription');
+
+
+  if (x.style.display !== 'block') {
+    x.style.display = 'block';
+
+  } else {
+    x.style.display = 'none';
+  }
+}
+
+function hideDate() {
+  var x = document.getElementById('dateColor');
+  var b = document.getElementById('pdate');
+
+
+  if (x.style.display !== 'block') {
+    x.style.display = 'block';
+
+  } else {
+    x.style.display = 'none';
+  }
+}
+
+function hideTime() {
+  var x = document.getElementById('timeColor');
+  var b = document.getElementById('ptime');
+
+
+  if (x.style.display !== 'block') {
+    x.style.display = 'block';
+
+  } else {
+    x.style.display = 'none';
+  }
+}
+
+function hideAddress() {
+  var x = document.getElementById('addressColor');
+  var b = document.getElementById('paddress');
+
+
+  if (x.style.display !== 'block') {
+    x.style.display = 'block';
+
+  } else {
+    x.style.display = 'none';
+  }
+}		
+
+
+// Shows the Preview while typing in the details
+		function showHTML (){
+			txtarea1 = document.getElementById('description');
+			viewHtml = document.getElementById('pdescription');
+			viewHtml.innerHTML = txtarea1.value
+		}
+
+		function show (){
+			txtarea2 = document.getElementById('title');
+			viewHtml2 = document.getElementById('ptitle');
+			viewHtml2.innerHTML = txtarea2.value
+		}
+
+		function date (){
+			date = document.getElementById('date');
+			pvdate = document.getElementById('pdate');
+			pvdate.innerHTML = date.value
+		}
+
+		function time (){
+			time = document.getElementById('time');
+			pvtime = document.getElementById('ptime');
+			pvtime.innerHTML = time.value
+		}
+
+		function testing(){
+			txtarea3 = document.getElementById('address');
+			viewHtml3 = document.getElementById('paddress');
+			viewHtml3.innerHTML = txtarea3.value
+		}
+
+//Below is for the Background Color
+		colorPicker = document.getElementById("colorPicker");
+		box = document.getElementById("box");
+		// output = document.getElementById("output");
+		box.style.backgroundColor = colorPicker.value;
+
+		colorPicker.addEventListener("input", function(event) {
+ 		box.style.backgroundColor = event.target.value;
+ 		}, false);
+
+//Below is for the Font Colors
+		// titleColor = document.getElementById("titleColor");
+		// ptitle = document.getElementById("ptitle");
+		// ptitle.style.color = titleColor.value;
+
+		// titleColor.addEventListener("input", function(event) {
+ 	// 	ptitle.style.color = event.target.value;
+ 	// 	}, false); 	
+
+		// descriptionColor = document.getElementById("descriptionColor");
+		// pdescription = document.getElementById("pdescription");
+		// pdescription.style.color = descriptionColor.value;
+
+		// descriptionColor.addEventListener("input", function(event) {
+ 	// 	pdescription.style.color = event.target.value;
+ 	// 	}, false); 	
+
+ 	// 	dateColor = document.getElementById("dateColor");
+		// pdate = document.getElementById("pdate");
+		// pdate.style.color = dateColor.value;
+
+		// dateColor.addEventListener("input", function(event) {
+ 	// 	pdate.style.color = event.target.value;
+ 	// 	}, false); 	
+ 		
+ 	// 	timeColor = document.getElementById("timeColor");
+		// ptime = document.getElementById("ptime");
+		// ptime.style.color = timeColor.value;
+
+		// timeColor.addEventListener("input", function(event) {
+ 	// 	ptime.style.color = event.target.value;
+ 	// 	}, false); 	
+ 		
+		// addressColor = document.getElementById("addressColor");
+		// paddress = document.getElementById("paddress");
+		// paddress.style.color = addressColor.value;
+
+		// addressColor.addEventListener("input", function(event) {
+ 	// 	paddress.style.color = event.target.value;
+ 	// 	}, false); 	 						
+
+
+
+
+		// var dragValue;
+
+		// function move(id){
+		// 	var get = document.getElementById("ptitle");
+		// 	get.style.position = "absolute";
+		// 	element.onmousedown = function(){
+		// 		dragValue = element;
+		// 	}
+		// }
+		// document.onmouseup = function(e){
+		// 	dragValue = null;
+		// }
+		// document.onmousemove = function(e){
+		// 	var x = e.pagex;
+		// 	var y = e.pageY;
+
+		// 	dragValue.style.left = x + "px";
+		// 	dragValue.style.top = y + "px";
+		// }
+
+	</script>
+
+</body>
+</html>

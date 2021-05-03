@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+   body {margin:0;font-family:Arial}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+		#box { 
+			width: 600px;
+			height: 400px;
+			background: #ffe6e6;
+			float: left;
+			margin-top: 30px; margin-left: 30px;
+			border-style: groove;
+            border-width: 7px;
+            border-color: #800080; 
+		}
+		#name {
+			font-size: 25px; text-align: center; 
+			font-family: "Courier New";
+			color: #527a7a;
+			text-transform: uppercase;
+		}
+
+		h1 {
+			font-size: 35px; text-align: center; 
+			font-family: "Lucida Handwriting";
+			color: #cc66cc;
+		}
+
+		img{
+			width: 140px;
+			height: 140px; display: inline-block;
+		}
+    body {
+      background-color:  #ffccff
+    }
+	
+	</style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Iftar E-card</title>
+</head>
+<body>
+	<div class="topnav" id="myTopnav">
+  <a href="index.html" class="active">Home</a>
+  <!-- <div class="dropdown">
+    <button class="dropbtn">Card Template 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a href="corporate.html">Corporate</a>
+      <a href="formal.html">Formal</a>
+      <a href="#informalbutton">Informal</a>
+    </div>
+  </div> -->
+  <a href="customcard.html">Custom Cards</a>
+  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+</div>
+	<div id="box" ondrop="drop(event)" ondragover="allowDrop(event)">
+	<div id= "name" contenteditable="true"> <!-- Ani untuk edit content text nya --> 
+    To:</div>
+   <h1>Join us <br> for an <br> Iftar Gathering</h1>
+   <div id= "name" contenteditable="true">Date & Time:</div>
+   <div id= "name" contenteditable="true">Address: </div>
+	</div>
+  <h2>Create your own Iftar Invitation Card</h2>
+  <p>1) Click on the 'TO: ', 'DATE & TIME: ' , 'ADDRESS: ' to customise your card</p>
+	<p>2) Choose your sticker (Drag the chosen sticker & Drop on the bottom of the card) </p>
+<img id="drag1" src="./masjid3.png" draggable="true" ondragstart="drag(event)">
+<img id="drag2" src="./masjid4.png" draggable="true" ondragstart="drag(event)">
+<img id="drag3" src="./masjid5.png" draggable="true" ondragstart="drag(event)">
+
+<button onclick="save()">Send to email</button>
+
+
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
+
+
+</script>
+
+</body>
+</html>
